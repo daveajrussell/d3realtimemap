@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<body>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="/src/map.js"></script>
+    <script>
+        draw();
+        d3.json('src/coords.json', function (raw) {
+            var coords = Object.keys(raw).map(x => Array(raw[x].longitude, raw[x].latitude));
+            setInterval(() => {
+                ping(coords);
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
